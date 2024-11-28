@@ -1,8 +1,13 @@
-import { auth } from "@/auth";
+import { Metadata } from "next";
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupCardType } from "@/components/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { STARTUP_QUERY } from "@/sanity/lib/queries";
+
+export const metadata: Metadata = {
+  title: "DreamsOfStartups | Home",
+  description: "Pitch, Vote and Grow",
+};
 
 export default async function Home({
   searchParams,
@@ -11,9 +16,6 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
   const params = { search: query || null };
-
-  const session = await auth();
-  console.log(session?.id);
 
   const { data: posts } = await sanityFetch({ query: STARTUP_QUERY, params });
 

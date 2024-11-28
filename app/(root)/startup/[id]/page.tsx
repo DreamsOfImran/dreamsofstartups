@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import {
@@ -16,6 +17,11 @@ import StartupCard, { StartupCardType } from "@/components/StartupCard";
 const md = markdownit();
 
 export const experimental_ppr = true;
+
+export const metadata: Metadata = {
+  title: "DreamsOfStartups | Startup",
+  description: "Pitch, Vote and Grow",
+};
 
 const StartupPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;

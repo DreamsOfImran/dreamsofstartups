@@ -1,6 +1,12 @@
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import StartupForm from "@/components/StartupForm";
-import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create Startup",
+  description: "Pitch, Vote and Grow",
+};
 
 const CreatePage = async () => {
   const session = await auth();
